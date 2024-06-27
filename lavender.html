@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavender Page</title>
+    <style>
+        body {
+            background-color: #E6E6FA; /* Lavender background color */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+      .game-container {
+            text-align: center;
+        }
+
+      .doors {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+      .door {
+            cursor: pointer;
+        }
+
+      .flower-bouquet {
+            display: none;
+            max-width: 50%;
+            height: auto;
+            margin-top: 20px;
+            transition: transform 0.5s ease-in-out; /* Example transition effect */
+        }
+
+      .nav-buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Welcome!</h1>
+        <p>Choose a door!!</p>
+        <div class="doors">
+            <img src="door.png" alt="Door 1" class="door" onclick="openDoor(1)">
+            <img src="door.png" alt="Door 2" class="door" onclick="openDoor(2)">
+            <img src="door.png" alt="Door 3" class="door" onclick="openDoor(3)">
+        </div>
+        <img src="flowers.png" alt="Flower Bouquet" class="flower-bouquet" id="flowerBouquet">
+        <button id="retryButton" style="display: none;" onclick="resetGame()">Retry</button>
+        <p id="resultMessage"></p>
+        <div class="nav-buttons">
+            <a href="letter.html" style="text-decoration: none;">
+                <button style="background-color: black; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Back</button>
+            </a>
+            <a href="LAST.html" style="text-decoration: none;">
+                <button style="background-color: black; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Next</button>
+            </a>
+        </div>
+    </div>
+    <script>
+        let bouquetDoor = Math.floor(Math.random() * 3) + 1; // Set the bouquet door at the start
+
+        function openDoor(doorNumber) {
+            let resultMessage = document.getElementById('resultMessage');
+            let flowerBouquet = document.getElementById('flowerBouquet');
+            let retryButton = document.getElementById('retryButton');
+
+            // Update door image based on result
+            let doorImage = document.getElementsByClassName('door')[doorNumber - 1];
+            if (doorNumber === bouquetDoor) {
+                resultMessage.textContent = "Congratulations! Well done!";
+                flowerBouquet.style.display = 'block';
+                flowerBouquet.style.transform = 'scale(1)'; // Reset scale
+                retryButton.style.display = 'none';
+            } else {
+                doorImage.src = 'monster.png'; // Replace with monster image
+                resultMessage.textContent = "Oops! You chose the wrong door. Try again!";
+                flowerBouquet.style.display = 'none';
+                retryButton.style.display = 'block';
+            }
+        }
+
+        function resetGame() {
+            document.getElementById('resultMessage').textContent = "";
+            document.getElementById('flowerBouquet').style.display = 'none';
+            bouquetDoor = Math.floor(Math.random() * 3) + 1; // Reset the bouquet door
+            document.querySelectorAll('.door').forEach(door => {
+                door.src = 'door.png'; // Reset all doors to initial state
+            });
+            document.getElementById('retryButton').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

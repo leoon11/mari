@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #E6E6FA; /* Lavender background */
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+.kuromi-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+#birthday-message {
+    margin-top: 20px;
+    font-size: 3em;
+    color: #333;
+    font-family: 'Sookie Cute Handwritten', cursive;
+}
+
+#next-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#next-button:hover {
+    background-color: #555;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-text {
+    animation: fadeInScale 2s ease-in-out;
+}
+
+.letter-image {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+#hidden-message {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #333;
+    font-family: 'Sookie Cute Handwritten', cursive;
+}
